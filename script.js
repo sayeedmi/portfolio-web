@@ -1,19 +1,24 @@
-// Blog posts data
+// Blog posts based on his actual story
 const blogPosts = [
     {
-        title: "The Dignity Algorithm: Why AI in Healthcare Needs Ethical Scaffolding",
-        date: "March 15, 2025",
-        full: "Artificial intelligence promises to revolutionize diagnostics, but without deliberate ethical frameworks, we risk automating inequity. In this essay, I argue that AI systems must be transparent, auditable, and inclusive of patient narratives. Drawing from my research at Stanford on bias in radiology models, I demonstrate how small dataset imbalances can lead to 18% higher misdiagnosis rates for underrepresented groups. My proposed ‘Ethical Scaffolding’ approach includes continuous community feedback loops, regulatory sandboxes, and mandatory bias disclosures. Ultimately, we need to embed dignity by design — not as an afterthought."
+        title: "From a Small Village to a Russian Scholarship: Lessons in Resilience",
+        date: "January 2025",
+        full: "Growing up in rural Bangladesh, I never imagined I'd be studying abroad on a fully funded Russian Government Scholarship. The journey was filled with late nights studying under candlelight, fierce competition (14,000 applicants for 120 seats), and the constant drive to prove that geography doesn't determine destiny. This essay reflects on the power of perseverance, the support of mentors, and how my humble beginnings shaped my vision for using technology to uplift others."
     },
     {
-        title: "Lessons from Gene Editing: What CRISPR Taught Me About Scientific Responsibility",
-        date: "January 10, 2025",
-        full: "During my internship at the Broad Institute, I witnessed both the miracle and the responsibility of gene editing. While engineering a base-editing approach for sickle cell anemia, I realized that accessibility determines impact. We must democratize breakthrough therapies, ensuring they reach marginalized communities first. This post explores how my conversations with bioethicists and patient advocates reshaped my perspective: scientific progress must be paired with global justice frameworks. I call for open-sourcing safety data and establishing international youth ethics boards."
+        title: "Why I Love Linux: Freedom, Community, and Giving Back",
+        date: "December 2024",
+        full: "For five years, Linux has been more than an operating system—it's been a philosophy. I started using it because my old computer couldn't run Windows, but I stayed because of the open‑source ethos. Now I help others in my community install Linux for free, solving their computer problems and teaching them digital literacy. I'm currently preparing to contribute to the Linux kernel. This post explores why open source is a tool for social equity."
     },
     {
-        title: "Beyond the Ivy Gates: Reimagining Merit in the Age of Algorithmic Admissions",
-        date: "November 22, 2024",
-        full: "Standardized testing and GPAs tell only a fragment of the story. Through my work with ‘Code for Equity,’ I’ve seen brilliant first-gen students who lack test prep resources but possess immense creativity. This blog proposes a reimagined admissions framework: portfolio-based reviews, community impact statements, and removing financial barriers for application fees. Ivy League institutions should be at the forefront of holistic, equitable evaluation — measuring not just what students have achieved, but the obstacles they’ve overcome and the change they will create."
+        title: "Volunteering Near Rohingya Camps: What I Learned About Humanity",
+        date: "September 2024",
+        full: "Living close to the Rohingya camps in Bangladesh, I witnessed displacement, resilience, and the urgent need for compassion. Through both NGO‑led efforts and personal initiatives, I helped provide basic necessities and spent time with families who had lost everything. This experience taught me that true impact comes from showing up, listening, and using whatever skills you have to ease suffering."
+    },
+    {
+        title: "The Joy of Tutoring: How Two Students Went from Bottom to Top",
+        date: "July 2024",
+        full: "When I started tutoring two young students, one was ranked 44th in her class and the other 30th. A year later, they had climbed to 1st and 3rd respectively. It wasn't about drilling them with facts—it was about building their confidence, teaching them how to learn, and sharing moral values. This experience solidified my belief that education is the most powerful equalizer."
     }
 ];
 
@@ -35,7 +40,6 @@ function renderBlog() {
         blogGrid.appendChild(card);
     });
 
-    // Attach event listeners to read-more buttons
     document.querySelectorAll('.read-more').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const idx = btn.getAttribute('data-idx');
@@ -50,7 +54,7 @@ function renderBlog() {
     });
 }
 
-// Modal close functionality
+// Modal close
 function setupModal() {
     const modal = document.getElementById('blogModal');
     const closeBtn = document.querySelector('.modal-close');
@@ -62,11 +66,10 @@ function setupModal() {
     });
 }
 
-// Active nav link highlighting on scroll
+// Active nav highlight
 function highlightNav() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
-
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
@@ -76,7 +79,6 @@ function highlightNav() {
                 current = section.getAttribute('id');
             }
         });
-
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
@@ -97,31 +99,31 @@ function setupMobileMenu() {
     }
 }
 
-// Contact form submission (simulate)
+// Contact form handler
 function setupContactForm() {
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for reaching out! I will respond shortly. (Demo: no actual email sent)');
+            alert('Thank you for reaching out! I’ll get back to you soon.');
             form.reset();
         });
     }
 }
 
-// Download CV placeholder
+// CV placeholder
 function setupCV() {
     const cvBtn = document.getElementById('downloadCV');
     const cvLink = document.getElementById('cvLink');
     const fakeDownload = (e) => {
         e.preventDefault();
-        alert('In a real scenario, this would download a PDF version of Elena’s full CV. For demo purposes, you can add a real file.');
+        alert('This would download a PDF version of my full CV. For a real version, please contact me directly.');
     };
     if (cvBtn) cvBtn.addEventListener('click', fakeDownload);
     if (cvLink) cvLink.addEventListener('click', fakeDownload);
 }
 
-// Smooth scroll for anchor links
+// Smooth scroll
 function setupSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -131,7 +133,6 @@ function setupSmoothScroll() {
                 if (target) {
                     e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth' });
-                    // close mobile menu if open
                     const navLinks = document.querySelector('.nav-links');
                     if (navLinks && navLinks.classList.contains('active')) {
                         navLinks.classList.remove('active');
@@ -142,7 +143,7 @@ function setupSmoothScroll() {
     });
 }
 
-// Initialize everything
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
     renderBlog();
     setupModal();
